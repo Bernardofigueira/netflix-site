@@ -1,0 +1,28 @@
+{% load static %}
+<header>
+    <a href="{% url 'inicio'%}" class="logo"><img src="{% static '/img/logo.png' %}"></a>
+    <ul class="navigation">
+      <li><a href="{% url 'inicio'%}">Início</a></li>
+      <li><a href="{% url 'series' %}">Séries</a></li>
+      <li><a href="{% url 'filmes'%}">Filmes</a></li>
+      <li><a href="{% url 'lancamentos'%}">Lançamentos</a></li>
+      
+    </ul>
+    <div class="search">
+      <input type="text" placeholder="Search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    <section class="bem_vindo">
+      {% if request.session.nome_cliente %}
+      <img src="{% static 'img/carinha.jpg'%}" alt="">
+        <p>Olá, {{ request.session.nome_cliente }} {{ request.session.sobrenome_cliente}}</p>
+        <a href="{% url 'informacao' %}">Minhas Informações</a>
+        <a href="{% url 'cliente_sair'%}" class="sair">Sair</a>
+
+      {% else %}
+        <form action="{% url 'login' %}" method="get">
+            <button class="login-btn">Login</button>
+        </form>
+      {% endif %}
+    </section>
+  </header>

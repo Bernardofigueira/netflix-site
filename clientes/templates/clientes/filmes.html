@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Filmes{% endblock %}
+
+{% block content %}
+<section class="tipos">
+    <h1>Filmes</h1>
+    <section class="tv-category">
+        <h2>Filmes Americanos</h2>
+        <div class="tv-carousel">
+            <button class="nav prev" onclick="scrollRow(this, -1)">&#10094;</button>
+            <div class="tv-row">
+                <img src="{% static 'img/us/prison_break.jpg' %}" alt="Prison Break">
+                <img src="{% static 'img/us/dexter.jpg' %}" alt="Dexter">
+                <img src="{% static 'img/us/resident.jpg' %}" alt="The Resident">
+                <img src="{% static 'img/us/flash.jpg' %}" alt="Flash">
+                <img src="{% static 'img/us/show.jpg' %}" alt="Apenas um Show">
+            </div>
+            <button class="nav next" onclick="scrollRow(this, 1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="tv-category">
+        <h2>Crianças e Família</h2>
+        <div class="tv-carousel">
+            <button class="nav prev" onclick="scrollRow(this, -1)">&#10094;</button>
+            <div class="tv-row">
+                <img src="{% static 'img/us/prison_break.jpg' %}" alt="Prison Break">
+                <img src="{% static 'img/us/dexter.jpg' %}" alt="Dexter">
+                <img src="{% static 'img/us/resident.jpg' %}" alt="The Resident">
+                <img src="{% static 'img/us/flash.jpg' %}" alt="Flash">
+                <img src="{% static 'img/us/show.jpg' %}" alt="Apenas um Show">
+            </div>
+            <button class="nav next" onclick="scrollRow(this, 1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="tv-category">
+        <h2>Drama</h2>
+        <div class="tv-carousel">
+            <button class="nav prev" onclick="scrollRow(this, -1)">&#10094;</button>
+            <div class="tv-row">
+                <img src="{% static 'img/us/prison_break.jpg' %}" alt="Prison Break">
+                <img src="{% static 'img/us/dexter.jpg' %}" alt="Dexter">
+                <img src="{% static 'img/us/resident.jpg' %}" alt="The Resident">
+                <img src="{% static 'img/us/flash.jpg' %}" alt="Flash">
+                <img src="{% static 'img/us/show.jpg' %}" alt="Apenas um Show">
+            </div>
+            <button class="nav next" onclick="scrollRow(this, 1)">&#10095;</button>
+        </div>
+    </section>
+</section>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>
+       {% block title %} {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <!-- Encaixe do cabeçalho -->
+       {% include 'componentes/header.html' %}
+    </header>
+    <main>
+        <!-- Criando a janela do porta retrato -->
+       {% block content %} {% endblock %}
+    </main>
+    <script>
+        function toggleVideo(){
+        const trailer = document.querySelector('.trailer');
+        const video = document.querySelector('video');
+        trailer.classList.toggle('active');
+        video.currentTime = 0;
+        video.pause();
+        }
+    </script>
+</body>
+</html>

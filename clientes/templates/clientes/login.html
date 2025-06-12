@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<section class="login">
+    <img src="{% static 'img/logo.png' %}" class="net">
+    <section class="contato">
+                <div class="area-formulario">
+                    <h2>Login</h2>
+                    <form action="{% url 'login'%}" method="post" class="formulario">
+                        {% csrf_token %}
+                        <div class="campos">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="input"  placeholder="Digite o seu e-mail">
+                        </div>
+                        <div class="campos">
+                            <label for="senha">Senha</label>
+                            <input type="password" class="input" name="senha"  placeholder="Digite a sua senha">
+                        </div>
+                        <input type="submit" name="enviar" value="Enviar" class="btn-enviar">
+                        <a href="{% url 'cadastro' %}"><h3>Não tem login?Cadastre-se</h3></a>
+                    </form>
+                </div>
+               <!--   <div class="erro">
+                    <h1>{{ title }}</h1>
+                    <p>Nome: {{ cliente.nome }} {{ cliente.sobrenome }}</p>
+                    {% if mensagem %}
+                    <div class="alert alert-danger" role="alert">
+                        <p>{{mensagem}}</p> Uso do conceito context 
+                    </div>
+                    {% endif %}
+                </div>
+                </section>  -->
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Cadastro {% endblock %}
+{% block content %}
+<section class="login">
+    <img src="{% static 'img/logo.png' %}" class="net">
+    <section class="contato">
+
+                <div class="area-formulario">
+                    <h2>Cadastro</h2>
+                    <form class="formulario" action="" method="post">
+                        {% csrf_token %}
+                        <div class="campos">
+                            <label for="nome">Nome</label>
+                            {{ form.nome }}
+                        </div>
+                        <div class="campos">
+                            <label for="email">Sobrenome</label>
+                            {{ form.sobrenome  }}
+                        </div>
+                        <div class="campos">
+                            <label for="assunto">CPF</label>
+                            {{ form.cpf }}
+                        </div>
+                        <div class="campos">
+                            <label for="mensagem">Data de Nascimento</label>
+                            {{ form.data_nascimento }}
+                        </div>
+                        <div class="campos">
+                            <label for="mensagem">Telefone</label>
+                            {{ form.telefone }}
+                        </div>
+                        <div class="campos">
+                            <label for="mensagem">Email</label>
+                            {{ form.email  }}
+                        </div>
+                        <div class="campos">
+                            <label for="mensagem">Senha</label>
+                            {{ form.senha }}
+                        </div>
+                        <input type="submit" name="enviar" value="Enviar" class="btn-enviar">
+                    </form>
+                </div>
+    </section>
+</section>
+
+
+
+
+{% endblock %}

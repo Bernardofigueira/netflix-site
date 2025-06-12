@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Minhas Informações {% endblock %}
+{% block content %}
+   
+    <div class="tab_cli">
+        <section>
+            <div class="titulo"><h2>Clientes</h2></div>
+            
+        </section>
+        <section class="tabela">
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <td>{{ request.session.nome_cliente }}</td>
+                    <td>{{ request.session.sobrenome_cliente }}</td>
+                    <td>{{ request.session.cpf_cliente }}</td>
+                    <td>{{cliente.data_nascimento | date:"d/m/Y"}}</td>
+                    <td>{{cliente.telefone}}</td>
+                    <td>{{cliente.email}}</td>
+                
+                </tr>
+            </table>  
+        </section>
+
+    </div>
+    
+
+
+
+{% endblock %}

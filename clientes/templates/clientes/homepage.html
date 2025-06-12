@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content %}
+
+  <div class="banner">
+    <img src="{% static 'img/bg.jpg' %}" class="bg">
+    <div class="content">
+      <img src="{% static 'img/name.png' %}" class="movieTitle">
+      <h4>
+        <span>2020</span>
+        <span><i>12+</i> </span>
+        <span>1h 55min</span>
+        <span>Action</span>
+      </h4>
+      <p>Em "Mulan", da Disney, a aclamada cineasta Niki Caro dá vida ao conto épico chinês, onde uma jovem destemida arrisca tudo pelo amor à sua família e ao seu país, até se tornar uma das maiores guerreiras da história da China. Quando o imperador da China decreta que um homem em cada família deve servir no Exército Imperial e defender o país dos invasores do norte, Hua Mulan, a filha mais velha de um honrado guerreiro, entra em cena para tomar o lugar do seu pai doente. Fazendo-se passar por homem, Hua Jun vai passando todos os testes valendo-se da sua força interior para atingir o seu verdadeiro potencial. Esta épica viagem vai transformá-la numa honrada guerreira, merecedora do respeito de uma nação imensamente grata… e do orgulho do pai.  
+      </p>
+      <div class="buttons">
+        <a href="#"><i class="fa fa-play" aria-hidden="true"></i> Play</a>
+        <a href="#"><i class="fa fa-plus" aria-hidden="true"></i> My List</a>
+      </div>
+    </div>
+    <a href="#" class="play"  onclick="toggleVideo()"><img src="{% static 'img/play.png' %}">Wacth Trailler</a>
+  </div>
+
+  <div class="trailer">
+    <video src="{% static 'img/trailer1.mp4'%}" controls="true"></video>
+    <img src="{% static 'img/close.png'%}" class="close" onclick="toggleVideo()">
+  </div>
+
+  <script src="script.js"></script>
+{% endblock %}
