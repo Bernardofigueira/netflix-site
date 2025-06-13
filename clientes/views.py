@@ -18,8 +18,6 @@ def filmes(request):
 def lancamentos(request):
     return render(request, 'clientes/lancamentos.html')
 
-def login(request):
-    return render(request, 'clientes/login.html')
 
 class Cadastro(CreateView):
     model = Cliente
@@ -27,7 +25,10 @@ class Cadastro(CreateView):
     template_name = 'clientes/cadastro.html'   #Gera o template do formulario
     def get_context_data(self, **kwargs):
         #**kwargs - espera qualquer argumento
-        context = super().get_context_data(**kwargs) #Cria o context
+
+        #Cria o context
+
+        context = super().get_context_data(**kwargs) 
         context['titulo'] = 'Cadastro'
         context['botao'] = 'Cadastrar'
         return context
@@ -46,8 +47,9 @@ class BuscaCliente(View):
         if email and senha:
             nosso_cliente = Cliente.objects.filter(email=email, senha=senha).first()
             if nosso_cliente:
+
                 #Vamos criar as sessoes
-                request.session['cliente_id'] = nosso_cliente.id
+
                 request.session['nome_cliente'] = nosso_cliente.nome
                 request.session['sobrenome_cliente'] = nosso_cliente.sobrenome
                 request.session['cpf_cliente'] = nosso_cliente.cpf
@@ -87,6 +89,7 @@ class Listagem(ListView):
         #Se a sessao existir e o usuario 
         return super().get(request, *args, **kwargs)
     template_name = 'clientes/informacao.html'#Conecta ao arquivo html do templates
+    context_object_name = 'client   es'
 
 class Editar(UpdateView):
     model = Cliente
@@ -101,10 +104,12 @@ class Editar(UpdateView):
         context['botao'] = 'Editar'
         return context
     
+    # Atualiza a sessão com os novos dados
+    
     def form_valid(self, form):
         response = super().form_valid(form)
         
-                # Atualiza a sessão com os novos dados
+                
         cliente = form.instance
         self.request.session['cliente_id'] = cliente.id
         self.request.session['nome_cliente'] = cliente.nome
