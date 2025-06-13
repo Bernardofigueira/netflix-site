@@ -7,7 +7,7 @@
     <section class="contato">
 
                 <div class="area-formulario">
-                    <h2>Cadastro</h2>
+                    <h2>{{ titulo }}</h2>
                     <form class="formulario" action="" method="post">
                         {% csrf_token %}
                         <div class="campos">
@@ -38,7 +38,7 @@
                             <label for="mensagem">Senha</label>
                             {{ form.senha }}
                         </div>
-                        <input type="submit" name="enviar" value="Enviar" class="btn-enviar">
+                        <button type="submit" name="enviar" class="btn-enviar">{{ botao }}</button>
                     </form>
                 </div>
     </section>
