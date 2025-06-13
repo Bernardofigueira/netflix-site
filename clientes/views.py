@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView,CreateView,View
+from django.views.generic import ListView,CreateView,View,UpdateView
 from django.urls import reverse_lazy #O reverse_lazy redireciona para uma pagina
 from .models import Cliente
 from .forms import ClienteForm #Importa a classe do arquivo form.py
@@ -25,6 +25,12 @@ class Cadastro(CreateView):
     model = Cliente
     form_class = ClienteForm
     template_name = 'clientes/cadastro.html'   #Gera o template do formulario
+    def get_context_data(self, **kwargs):
+        #**kwargs - espera qualquer argumento
+        context = super().get_context_data(**kwargs) #Cria o context
+        context['titulo'] = 'Cadastro'
+        context['botao'] = 'Cadastrar'
+        return context
     success_url = reverse_lazy('inicio')
 
 
@@ -41,8 +47,13 @@ class BuscaCliente(View):
             nosso_cliente = Cliente.objects.filter(email=email, senha=senha).first()
             if nosso_cliente:
                 #Vamos criar as sessoes
+                request.session['cliente_id'] = nosso_cliente.id
                 request.session['nome_cliente'] = nosso_cliente.nome
                 request.session['sobrenome_cliente'] = nosso_cliente.sobrenome
+                request.session['cpf_cliente'] = nosso_cliente.cpf
+                request.session["data_nascimento"] = str(nosso_cliente.data_nascimento)
+                request.session['telefone_cliente'] = nosso_cliente.telefone
+                request.session['email_cliente'] = nosso_cliente.email
                 titulo = 'Cliente encontrado'
                 return render(request, 'clientes/homepage.html',{'cliente': nosso_cliente, 'title':titulo})
             else:
@@ -72,7 +83,36 @@ class Listagem(ListView):
     def get(self,request,*args,**kwargs):
         #Verificar se a sessão tem 'nome_cliente'
         if 'nome_cliente' not in request.session:
-            return redirect('busca_cliente')  
+            return redirect('login')  
         #Se a sessao existir e o usuario 
         return super().get(request, *args, **kwargs)
     template_name = 'clientes/informacao.html'#Conecta ao arquivo html do templates
+
+class Editar(UpdateView):
+    model = Cliente
+    form_class = ClienteForm
+    template_name = 'clientes/cadastro.html'   
+    
+    #Deixa dinamico dados no html
+    def get_context_data(self, **kwargs):
+        #**kwargs - espera qualquer argumento
+        context = super().get_context_data(**kwargs) #Cria o context
+        context['titulo'] = 'Edição dos Clientes'
+        context['botao'] = 'Editar'
+        return context
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        
+                # Atualiza a sessão com os novos dados
+        cliente = form.instance
+        self.request.session['cliente_id'] = cliente.id
+        self.request.session['nome_cliente'] = cliente.nome
+        self.request.session['sobrenome_cliente'] = cliente.sobrenome
+        self.request.session['cpf_cliente'] = cliente.cpf
+        self.request.session["data_nascimento"] = str(cliente.data_nascimento)
+        self.request.session['telefone_cliente'] = cliente.telefone
+        self.request.session['email_cliente'] = cliente.email
+
+        return response
+    success_url = reverse_lazy('informacao')
