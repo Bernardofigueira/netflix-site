@@ -8,26 +8,33 @@
             <div class="titulo"><h2>Clientes</h2></div>
             
         </section>
-        <section class="tabela">
-            <table>
-                <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                </tr>
-                <tr>
-                    <td>{{ request.session.nome_cliente }}</td>
-                    <td>{{ request.session.sobrenome_cliente }}</td>
-                    <td>{{ request.session.cpf_cliente }}</td>
-                    <td>{{cliente.data_nascimento | date:"d/m/Y"}}</td>
-                    <td>{{cliente.telefone}}</td>
-                    <td>{{cliente.email}}</td>
+        <section class="informacoes">
+            <div><a  href="{% url 'cliente_update' request.session.cliente_id %}" class="botao">Editar</a></div>
+            <div class="Nome">
+                <h2>Nome</h2>
+                <h3>{{ request.session.nome_cliente }}</h3>
+            </div>
+            <div class="Nome">
+                <h2>Sobrenome</h2>
+                <h3>{{ request.session.sobrenome_cliente }}</h3>
+            </div>
+            <div class="Nome">
+                <h2>CPF</h2>
+                <h3>{{ request.session.cpf_cliente }}</h3>
+            </div>
+            <div class="Nome">
+                <h2>Data de Nascimento</h2>
+                <h3>{{ request.session.data_nascimento }}</h3>
                 
-                </tr>
-            </table>  
+            </div>
+            <div class="Nome">
+                <h2>Telefone</h2>
+                <h3>{{request.session.telefone_cliente}}</h3>
+            </div>
+            <div class="Nome">
+                <h2>E-mail</h2>
+                <h3>{{request.session.email_cliente}}</h3>
+            </div>
         </section>
 
     </div>

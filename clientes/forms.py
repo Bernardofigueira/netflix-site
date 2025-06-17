@@ -20,7 +20,6 @@ class ClienteForm(forms.ModelForm):
         'sobrenome': forms.TextInput(attrs={"class": "form-control input", "placeholder": "Digite seu sobrenome"}),
         'cpf': forms.TextInput(attrs={"class": "form-control input", "placeholder": "___ . ___ . ___ - __"}),
         'data_nascimento': forms.DateInput(attrs={"class": "form-control input", "placeholder": "DD/MM/AAAA", "type": "date"}),
-        'endereco': forms.TextInput(attrs={"class": "form-control input", "placeholder": "Digite seu endereço"}),
         'telefone': forms.TextInput(attrs={"class": "form-control input", "placeholder": "(XX) XXXX-XXXX"}),
         'email': forms.EmailInput(attrs={"class": "form-control input", "placeholder": "email@example.com"}),
         'senha': forms.TextInput(attrs={"class": "form-control input", "placeholder": "Digite sua senha", "type": "password"}),
