@@ -18,6 +18,10 @@ def filmes(request):
 def lancamentos(request):
     return render(request, 'clientes/lancamentos.html')
 
+
+#Cadastro
+
+
 class Cadastro(CreateView):
     model = Cliente
     form_class = ClienteForm
@@ -32,6 +36,9 @@ class Cadastro(CreateView):
         context['botao'] = 'Cadastrar'
         return context
     success_url = reverse_lazy('login')
+
+
+#Login
 
 
 class BuscaCliente(View):
@@ -64,6 +71,9 @@ class BuscaCliente(View):
         else:
             erro_message = "Por favor, informe um email e cpf para consulta"
             return render(request, 'clientes/login.html',{'mensagem':erro_message})
+        
+
+#Sair
             
 #Classe que encerra a sessão
 class Logout(View):
@@ -78,6 +88,9 @@ class Logout(View):
         return render(request, 'clientes/login.html',{'mensagem':erro_message})
     
 
+
+#Informações
+
 class Listagem(ListView):
     #a ferramenta listview permite (model,template_name)
     model = Cliente #Conecta ao modelo de banco de dados, E Retorna uma lista chamamda cliente_list 
@@ -89,6 +102,11 @@ class Listagem(ListView):
         return super().get(request, *args, **kwargs)
     template_name = 'clientes/informacao.html'#Conecta ao arquivo html do templates
     context_object_name = 'clientes'
+
+
+
+
+#Editar
 
 class Editar(UpdateView):
     model = Cliente
