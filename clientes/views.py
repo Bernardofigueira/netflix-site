@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView,CreateView,View,UpdateView
+from django.views.generic import ListView,CreateView,View,UpdateView,UpdateView
 from django.urls import reverse_lazy #O reverse_lazy redireciona para uma pagina
 from .models import Cliente
 from .forms import ClienteForm #Importa a classe do arquivo form.py
@@ -18,12 +18,11 @@ def filmes(request):
 def lancamentos(request):
     return render(request, 'clientes/lancamentos.html')
 
-<<<<<<< HEAD
+
 
 #Cadastro
 
-=======
->>>>>>> 56b34b9c3c2335268f9b302af870933d4f3920a0
+
 
 class Cadastro(CreateView):
     model = Cliente
@@ -38,17 +37,15 @@ class Cadastro(CreateView):
         context['titulo'] = 'Cadastro'
         context['botao'] = 'Cadastrar'
         return context
-<<<<<<< HEAD
+
     success_url = reverse_lazy('login')
 
 
 #Login
-=======
-    success_url = reverse_lazy('inicio')
->>>>>>> 56b34b9c3c2335268f9b302af870933d4f3920a0
 
 
-class BuscaCliente(View):
+
+class Login(View):
     def get(self, request): 
         return render(request , 'clientes/login.html') 
 
@@ -62,29 +59,20 @@ class BuscaCliente(View):
             if nosso_cliente:
 
                 #Vamos criar as sessoes
-<<<<<<< HEAD
+
                 request.session['cliente_id'] = nosso_cliente.id
                 request.session['nome_cliente'] = nosso_cliente.nome
                 request.session['sobrenome_cliente'] = nosso_cliente.sobrenome
                 request.session['cpf_cliente'] = nosso_cliente.cpf
                 request.session["data_nascimento"] = nosso_cliente.data_nascimento.strftime("%d/%m/%Y")
-=======
-
-                request.session['nome_cliente'] = nosso_cliente.nome
-                request.session['sobrenome_cliente'] = nosso_cliente.sobrenome
-                request.session['cpf_cliente'] = nosso_cliente.cpf
-                request.session["data_nascimento"] = str(nosso_cliente.data_nascimento)
->>>>>>> 56b34b9c3c2335268f9b302af870933d4f3920a0
                 request.session['telefone_cliente'] = nosso_cliente.telefone
                 request.session['email_cliente'] = nosso_cliente.email
-                titulo = 'Cliente encontrado'
-                return render(request, 'clientes/homepage.html',{'cliente': nosso_cliente, 'title':titulo})
+                return render(request, 'clientes/homepage.html')
             else:
-                erro_message = "Nenhum cliente encontrado"
+                erro_message = "Email ou Senha incorretos"
                 return render(request, 'clientes/login.html',{'mensagem':erro_message})
-
         else:
-            erro_message = "Por favor, informe um email e cpf para consulta"
+            erro_message = "Por favor, informe um email e senha para entrar"
             return render(request, 'clientes/login.html',{'mensagem':erro_message})
         
 
@@ -116,16 +104,13 @@ class Listagem(ListView):
         #Se a sessao existir e o usuario 
         return super().get(request, *args, **kwargs)
     template_name = 'clientes/informacao.html'#Conecta ao arquivo html do templates
-<<<<<<< HEAD
-    context_object_name = 'clientes'
 
 
 
 
 #Editar
-=======
-    context_object_name = 'client   es'
->>>>>>> 56b34b9c3c2335268f9b302af870933d4f3920a0
+
+
 
 class Editar(UpdateView):
     model = Cliente
@@ -151,11 +136,7 @@ class Editar(UpdateView):
         self.request.session['nome_cliente'] = cliente.nome
         self.request.session['sobrenome_cliente'] = cliente.sobrenome
         self.request.session['cpf_cliente'] = cliente.cpf
-<<<<<<< HEAD
         self.request.session["data_nascimento"] = cliente.data_nascimento.strftime("%d/%m/%Y")  
-=======
-        self.request.session["data_nascimento"] = str(cliente.data_nascimento)
->>>>>>> 56b34b9c3c2335268f9b302af870933d4f3920a0
         self.request.session['telefone_cliente'] = cliente.telefone
         self.request.session['email_cliente'] = cliente.email
 
