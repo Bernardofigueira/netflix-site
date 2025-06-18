@@ -295,7 +295,7 @@ h3 {
 .btn-check{
 position: relative !important;
 }
-img.net {
+.net {
   display: block;
   
   width: 300px;
@@ -305,8 +305,8 @@ img.net {
 
 
 .tipos {
-  margin-top: 200px; /* espaço abaixo do header */
-  padding: 0 60px;   /* opcional: espaçamento lateral */
+  margin-top: 200px; 
+  padding: 0 60px;   
   z-index: 1;
   position: relative;
 }
@@ -401,6 +401,7 @@ h1{
   display: flex;
 }
 .bem_vindo img{
+  margin-right: 10px;
   width: 30px;
   border: 1px;
   border-radius: 10px;
@@ -424,6 +425,7 @@ h1{
   padding: 15px;
   border: 2px solid white;
   background-color: gray;
+  border-radius: 15px;
 }
 
 .botao{
@@ -470,23 +472,3 @@ h1{
   }
 }
 
-
-
-@media(max-width: 600px){
-  header{
-    padding: 20px;
-  }
-  .search{
-    position: relative;
-    width: calc(100% - 20px);
-    height: 40px;    
-  }
-  .banner{
-    padding: 220px 30px 120px;
-  }
-  .banner .play{
-    left: 20px;
-    font-size: 1em;
-    bottom: 30px;
-  }
-}
